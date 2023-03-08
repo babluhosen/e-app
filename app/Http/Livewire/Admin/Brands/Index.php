@@ -16,7 +16,8 @@ class Index extends Component
         return[
             'brand_name'=>'required|string',
             'slug'=>'required|string',
-            'status'=>'nullable'
+            'status'=>'nullable',
+            'brand_id'=>'required|int'
         ];
     }
     public function resetInput()
