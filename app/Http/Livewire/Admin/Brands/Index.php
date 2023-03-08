@@ -9,7 +9,7 @@ class Index extends Component
 {
     use WithPagination;
     protected $paginationTheme='bootstrap';
-    public $brand_name, $slug, $status;
+    public $brand_name, $slug, $status, $brand_id;
 
      public function rules()
     {
@@ -39,11 +39,25 @@ class Index extends Component
    }
    public function editBrnad(int $brand_id)
    {
-    $brand=Brands::findOrFail($brand_id);
-    $this->brand_name=$brand->brand_name;
-    $this->slug=$brand->slug;
-    $this->status=$brand->status;
+    $this->$brand_id=$brand_id;//update jonno code//
+    //$b hosche forelse peramter name ($var as $b)//
+    $b=Brands::findOrFail($brand_id);
+    $this->brand_name=$b->brand_name;
+    $this->slug=$b->slug;
+    $this->status=$b->status;
 
+   }
+   public function updateBrand()
+   {
+    $validatedData=$this->validate();
+    Brands::findOrFail($this->$brand_id)->update([
+      'brand_name'=>$this->brand_name,
+      'slug'=>Str::slug($this->slug),
+      'status'=>$this->status==true?'1':'0',
+    ]);
+    session()->flash('message','Category Brand data has been Updated');
+    $this->dispatchBrowserEvent('close-modal');
+    $this->resetInput();
    }
     public function render()
     {
