@@ -36,6 +36,7 @@ Route::prefix('admin')-> middleware(['auth','isAdmin']) ->group(function(){
     });
 //brnads//
   Route::get('/brand',App\Http\Livewire\Admin\Brands\Index::class);
+  Route::put('/brand',App\Http\Livewire\Admin\Brands\Index::class);
 
 });
 

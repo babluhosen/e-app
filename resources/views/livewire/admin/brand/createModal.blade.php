@@ -44,7 +44,7 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-         <h1 class="modal-title fs-5" id="exModalLabel">Edit Brand</h1>
+         <h1 class="modal-title fs-5" id="exModalLabel">Update Brand</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <form wire:submit.prevent="updateBrand">
@@ -52,18 +52,18 @@
             <div class="row">
                     <div class="col-lg-12 mb-3">
                     <label>Name</label>
-                        <input type="text" wire:model.defer="brand_name" id="" class="form-control" placeholder="Enter Name"/>
+                        <input type="text" wire:model.defer="brand_name"  class="form-control" placeholder="Enter Name"/>
                         @error('brand_name')<small class="text-danger">{{$message}}</small>@enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label>Slug</label>
-                        <input type="text" wire:model.defer="slug"  id="" class="form-control" placeholder="Enter slug"/>
+                        <input type="text" wire:model.defer="slug"   class="form-control" placeholder="Enter slug"/>
                         @error('slug')<small class="text-danger">{{$message}}</small>@enderror
                     </div>
                    
                     <div class="col-lg-12 mb-3">
                     <label>Status</label>
-                        <input type="checkbox" wire:model.defer="status"  id="" />
+                        <input type="checkbox" wire:model.defer="status" />
                     </div>
             </div>
             <div class="modal-footer">

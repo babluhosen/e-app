@@ -39,7 +39,7 @@ class Index extends Component
    }
    public function editBrnad(int $brand_id)
    {
-    $this->$brand_id=$brand_id;//update jonno code//
+    $this->$brand_id=$brand_id;
     //$b hosche forelse peramter name ($var as $b)//
     $b=Brands::findOrFail($brand_id);
     $this->brand_name=$b->brand_name;
@@ -47,10 +47,17 @@ class Index extends Component
     $this->status=$b->status;
 
    }
+
+   public function closeModal(){
+    $this->resetInput();
+   }
+   public function openModal(){
+    $this->resetInput();
+   }
    public function updateBrand()
    {
     $validatedData=$this->validate();
-    Brands::findOrFail($this->$brand_id)->update([
+    Brands::find($this->$brand_id)->update([
       'brand_name'=>$this->brand_name,
       'slug'=>Str::slug($this->slug),
       'status'=>$this->status==true?'1':'0',
